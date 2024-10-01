@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/HighcloudTech/static/css/main.fbc71a44.css",
-    "main.js": "/HighcloudTech/static/js/main.a332c098.js",
-    "static/js/453.41eec669.chunk.js": "/HighcloudTech/static/js/453.41eec669.chunk.js",
+    "main.css": "/HighcloudTech/static/css/main.a874fcaf.css",
+    "main.js": "/HighcloudTech/static/js/main.040c8a2c.js",
+    "static/js/488.94d24ff7.chunk.js": "/HighcloudTech/static/js/488.94d24ff7.chunk.js",
     "index.html": "/HighcloudTech/index.html",
-    "main.fbc71a44.css.map": "/HighcloudTech/static/css/main.fbc71a44.css.map",
-    "main.a332c098.js.map": "/HighcloudTech/static/js/main.a332c098.js.map",
-    "453.41eec669.chunk.js.map": "/HighcloudTech/static/js/453.41eec669.chunk.js.map"
+    "main.a874fcaf.css.map": "/HighcloudTech/static/css/main.a874fcaf.css.map",
+    "main.040c8a2c.js.map": "/HighcloudTech/static/js/main.040c8a2c.js.map",
+    "488.94d24ff7.chunk.js.map": "/HighcloudTech/static/js/488.94d24ff7.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.fbc71a44.css",
-    "static/js/main.a332c098.js"
+    "static/css/main.a874fcaf.css",
+    "static/js/main.040c8a2c.js"
   ]
 }
