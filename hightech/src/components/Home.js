@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import Training from './Training';
+import './Home.css'; // Import your CSS file
 
 const images = [
   'https://www.angularjsindia.com/blog/wp-content/uploads/2022/01/front-end-development-roadmap-1200x675.jpg',
   'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGHiv4g47zFoMtMRQY0txvrVK447WFe_MYPg&s',
   'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTx19U5WunxBln5RdvRH3Vu2KnFd1I8xgUJjg&s',
-  'https://www.kdnuggets.com/wp-content/uploads/c_free_data_analyst_bootcamp_beginners_1.png' // Updated direct image link
+  'https://www.kdnuggets.com/wp-content/uploads/c_free_data_analyst_bootcamp_beginners_1.png'
 ];
 
 const Home = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
-    // Scroll to top on component mount with smooth behavior
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    
+
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
     }, 5000); // Change image every 5 seconds
@@ -31,12 +31,9 @@ const Home = () => {
             Information Technology
             <strong className="block font-extrabold text-yellow-300"> Natural Intelligence. </strong>
           </h1>
-
           <p className="mt-4 max-w-lg sm:text-xl text-blue">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt illo tenetur fuga ducimus
-            numquam ea!
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt illo tenetur fuga ducimus numquam ea!
           </p>
-
           <div className="mt-8 flex flex-wrap gap-4">
             <a
               href="#"
@@ -44,7 +41,6 @@ const Home = () => {
             >
               Enroll now
             </a>
-
             <a
               className="inline-flex items-center gap-2 rounded border border-blue-400 bg-transparent px-8 py-3 text-blue-600 hover:bg-blue-800 focus:outline-none focus:ring active:bg-blue-600"
               href="/courses"
@@ -69,8 +65,37 @@ const Home = () => {
         </div>
 
         {/* Right Side for Rotating Images */}
-        <div className="relative overflow-hidden bg-cover bg-center bg-no-repeat transition-all duration-1000 ease-in-out" style={{ backgroundImage: `url(${images[currentImageIndex]})` }}>
-          <div className="absolute inset-0 bg-black opacity-50"></div> {/* Optional: Add a dim effect on images */}
+        <div className="relative overflow-hidden h-full w-full perspective" style={{ perspective: '800px' }}>
+          <div
+            className="image-container"
+            style={{
+              display: 'flex',
+              transition: 'transform 1s ease',
+              transform: `rotateY(${currentImageIndex * -90}deg)`,
+              height: '100%',
+              width: '100%'
+            }}
+          >
+            {images.map((image, index) => (
+              <div
+                key={index}
+                className="image-item"
+                style={{
+                  minWidth: '100%',
+                  height: '100%',
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  opacity: index === currentImageIndex ? 1 : 0,
+                  transition: 'opacity 1s ease',
+                  zIndex: index === currentImageIndex ? 1 : 0,
+                  backgroundImage: `url(${image})`
+                }}
+              />
+            ))}
+          </div>
         </div>
       </section>
 

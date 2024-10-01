@@ -7,20 +7,23 @@ import MissionVision from './components/MissionVision';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import AboutUs from './components/About';
+import './styles.css'; // Import your CSS file
 
 const App = () => {
   return (
     <Router>
       <div className="font-sans">
-        <Header /> {/* Always displayed */}
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/courses" element={<Courses />} />
-          <Route path="/mission-vision" element={<MissionVision />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/about" element={<AboutUs />} />
-        </Routes>
-        <Footer /> {/* Always displayed */}
+        <div className="app-container"> {/* New container for styles */}
+          <Header /> {/* Always displayed */}
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/courses" element={<Courses />} />
+            <Route path="/mission-vision" element={<MissionVision />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/about" element={<AboutUs />} />
+          </Routes>
+          <Footer /> {/* Always displayed */}
+        </div>
       </div>
     </Router>
   );

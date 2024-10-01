@@ -57,7 +57,7 @@ const Header = () => {
 
         <div 
           id="mobile-menu" 
-          className={`fixed inset-y-0 left-0 bg-gray-200 bg-opacity-90 transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : '-translate-x-full'} w-3/5 md:w-1/4 md:static md:bg-transparent md:opacity-100 md:flex md:flex-row md:space-x-6`}
+          className={`fixed inset-y-0 left-0 bg-gray-100 bg-opacity-90 transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : '-translate-x-full'} w-3/5 md:w-1/4 md:static md:bg-transparent md:opacity-100 md:flex md:flex-row md:space-x-6`}
         >
           <ul className={`flex flex-col items-center md:flex-row md:space-x-6 text-blue-400`}>
             <li className="p-4"><Link to="/" className="hover:underline" onClick={closeMenu}>Home</Link></li>
