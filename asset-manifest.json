@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/HighcloudTech/static/css/main.fbc71a44.css",
+    "main.js": "/HighcloudTech/static/js/main.a332c098.js",
+    "static/js/453.41eec669.chunk.js": "/HighcloudTech/static/js/453.41eec669.chunk.js",
+    "index.html": "/HighcloudTech/index.html",
+    "main.fbc71a44.css.map": "/HighcloudTech/static/css/main.fbc71a44.css.map",
+    "main.a332c098.js.map": "/HighcloudTech/static/js/main.a332c098.js.map",
+    "453.41eec669.chunk.js.map": "/HighcloudTech/static/js/453.41eec669.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.fbc71a44.css",
+    "static/js/main.a332c098.js"
+  ]
+}
