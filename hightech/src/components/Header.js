@@ -33,7 +33,7 @@ const Header = () => {
   }, [isOpen]);
 
   return (
-    <header className="bg-white text-blue-600 p-4 shadow-md sticky top-0 z-50">
+    <header className="bg-white text-blue-600 p-2 shadow-md rounded-full sticky top-0 z-50">
       <nav className="container mx-auto flex justify-between items-center">
         <Link to="/" className="text-2xl font-bold">
           HighTECH
