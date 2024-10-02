@@ -7,6 +7,7 @@ import MissionVision from './components/MissionVision';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import AboutUs from './components/About';
+import Enroll from './components/Enroll';
 import './styles.css'; // Import your CSS file
 
 const App = () => {
@@ -21,6 +22,7 @@ const App = () => {
             <Route path="/mission-vision" element={<MissionVision />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/about" element={<AboutUs />} />
+            <Route path="/enroll" element={<Enroll />} /> 
           </Routes>
           <Footer /> {/* Always displayed */}
         </div>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom'; // Import Link for navigation
 import Training from './Training';
 import './Home.css'; // Import your CSS file
 
@@ -35,12 +36,12 @@ const Home = () => {
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt illo tenetur fuga ducimus numquam ea!
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
-            <a
-              href="#"
+            <Link 
+              to="/enroll"
               className="block w-full rounded bg-yellow-300 px-12 py-3 text-sm font-medium text-blue-600 shadow hover:bg-yellow-400 focus:outline-none focus:ring active:bg-yellow-500 sm:w-auto"
             >
               Enroll now
-            </a>
+            </Link>
             <a
               className="inline-flex items-center gap-2 rounded border border-blue-400 bg-transparent px-8 py-3 text-blue-600 hover:bg-blue-800 focus:outline-none focus:ring active:bg-blue-600"
               href="/courses"
