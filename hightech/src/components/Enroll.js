@@ -1,5 +1,7 @@
 // Enroll.js
 import React, { useState } from 'react';
+import { db } from './firebase'; // Adjusted import
+import { collection, addDoc } from 'firebase/firestore'; // Import necessary functions from Firestore
 
 const courses = [
   { id: 1, name: 'Front-End Development' },
@@ -19,36 +21,30 @@ const Enroll = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [selectedCourse, setSelectedCourse] = useState(courses[0]?.id || ''); // Default to first course
+  const [message, setMessage] = useState(''); // State for messages
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = { name, email, course: selectedCourse };
 
     try {
-      // Replace with your API endpoint
-      const response = await fetch('https://your-api-endpoint/enroll', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
-
-      if (response.ok) {
-        alert('Enrollment successful!');
-        // Reset form or redirect if needed
-      } else {
-        alert('Failed to enroll, please try again.');
-      }
+      // Add a new document to the Firestore collection
+      await addDoc(collection(db, 'enrollments'), data);
+      setMessage('Enrollment successful!'); // Success message
+      // Reset form
+      setName('');
+      setEmail('');
+      setSelectedCourse(courses[0]?.id || ''); // Reset to first course
     } catch (error) {
-      console.error('Error:', error);
-      alert('An error occurred, please try again.');
+      console.error('Error enrolling:', error);
+      setMessage('An error occurred, please try again.'); // Error message
     }
   };
 
   return (
     <div className="enroll-container p-16">
       <h1 className="text-3xl font-extrabold text-blue-800">Welcome to the Enrollment Page!</h1>
+      {message && <p className="text-green-600">{message}</p>} {/* Display success/error messages */}
       <form onSubmit={handleSubmit} className="mt-4">
         <div>
           <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
