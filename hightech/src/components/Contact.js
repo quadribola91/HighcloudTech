@@ -1,23 +1,48 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import { collection, addDoc } from 'firebase/firestore';
+import { db } from './firebase'; // Assuming firebase is set up and imported correctly.
+import './Contact.css'; // Import your CSS file for spinner styling
 
 const Contact = () => {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Redirect to the Google Form (replace with your actual Google Form URL)
-    const googleFormUrl = 'https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?usp=pp_url&entry.1234567890=' + document.getElementById('name').value +
-                           '&entry.0987654321=' + document.getElementById('email').value +
-                           '&entry.1111111111=' + document.getElementById('message').value;
+  const [loading, setLoading] = useState(false);
+  const [successMessage, setSuccessMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
-    window.open(googleFormUrl, '_blank');
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setLoading(true);  // Show spinner while loading
+
+    const formData = {
+      name: event.target.name.value,
+      email: event.target.email.value,
+      message: event.target.message.value,
+      timestamp: new Date(),
+    };
+
+    try {
+      // Add form data to Firestore
+      await addDoc(collection(db, 'contacts'), formData);
+      setSuccessMessage('Your message has been sent successfully!');
+    } catch (error) {
+      setErrorMessage('Failed to send the message. Please try again.');
+    } finally {
+      setLoading(false);  // Hide spinner after submission
+    }
   };
 
   useEffect(() => {
-    // Scroll to top on component mount with smooth behavior
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, []);
+    // Clear messages after a few seconds
+    if (successMessage || errorMessage) {
+      const timer = setTimeout(() => {
+        setSuccessMessage('');
+        setErrorMessage('');
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [successMessage, errorMessage]);
 
   return (
-    <section id="contact" className="p-8 bg-gray-50">
+    <section id="contact" className="p-8 bg-gray-50 relative">
       <h2 className="text-3xl font-bold mb-4 text-center">Contact Us</h2>
       <form onSubmit={handleSubmit} className="max-w-md mx-auto">
         <div className="mb-4">
@@ -51,6 +76,17 @@ const Contact = () => {
           Send
         </button>
       </form>
+
+      {/* Success/Error Message */}
+      {successMessage && <p className="text-green-600 text-center mt-4">{successMessage}</p>}
+      {errorMessage && <p className="text-red-600 text-center mt-4">{errorMessage}</p>}
+
+      {/* Loading Spinner Overlay */}
+      {loading && (
+        <div className="overlay">
+          <div className="loader"></div>
+        </div>
+      )}
     </section>
   );
 };

@@ -1,7 +1,8 @@
 // Enroll.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { db } from './firebase'; // Adjusted import
 import { collection, addDoc } from 'firebase/firestore'; // Import necessary functions from Firestore
+import './Contact.css'; // Import your CSS for spinner styling
 
 const courses = [
   { id: 1, name: 'Front-End Development' },
@@ -22,9 +23,11 @@ const Enroll = () => {
   const [email, setEmail] = useState('');
   const [selectedCourse, setSelectedCourse] = useState(courses[0]?.id || ''); // Default to first course
   const [message, setMessage] = useState(''); // State for messages
+  const [loading, setLoading] = useState(false); // State to handle loading spinner
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true); // Show spinner while loading
     const data = { name, email, course: selectedCourse };
 
     try {
@@ -38,11 +41,23 @@ const Enroll = () => {
     } catch (error) {
       console.error('Error enrolling:', error);
       setMessage('An error occurred, please try again.'); // Error message
+    } finally {
+      setLoading(false); // Hide spinner after submission
     }
   };
 
+  useEffect(() => {
+    // Clear messages after a few seconds
+    if (message) {
+      const timer = setTimeout(() => {
+        setMessage('');
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [message]);
+
   return (
-    <div className="enroll-container p-16">
+    <div className="enroll-container p-16 relative">
       <h1 className="text-3xl font-extrabold text-blue-800">Welcome to the Enrollment Page!</h1>
       {message && <p className="text-green-600">{message}</p>} {/* Display success/error messages */}
       <form onSubmit={handleSubmit} className="mt-4">
@@ -91,6 +106,13 @@ const Enroll = () => {
           Submit
         </button>
       </form>
+
+      {/* Loading Spinner Overlay */}
+      {loading && (
+        <div className="overlay">
+          <div className="loader"></div>
+        </div>
+      )}
     </div>
   );
 };
