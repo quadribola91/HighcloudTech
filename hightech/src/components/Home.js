@@ -12,6 +12,7 @@ const images = [
 
 const Home = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [showPopup, setShowPopup] = useState(false); // State for popup visibility
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -20,8 +21,27 @@ const Home = () => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
     }, 5000); // Change image every 5 seconds
 
-    return () => clearInterval(interval); // Clean up interval on component unmount
+    // Show popup after 5 seconds
+    const timer = setTimeout(() => {
+      setShowPopup(true);
+    }, 5000);
+
+    return () => {
+      clearInterval(interval); // Clean up interval on component unmount
+      clearTimeout(timer); // Clean up timeout when component unmounts
+    };
   }, []);
+
+  // Function to close the popup
+  const handleCancel = () => {
+    setShowPopup(false);
+  };
+
+  // Function to handle Enroll Now
+  const handleEnrollNow = () => {
+    setShowPopup(false);
+    // You can also redirect to the enrollment page or perform any other action
+  };
 
   return (
     <>
@@ -100,8 +120,34 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Popup Modal */}
+      {showPopup && (
+        <div className="popup-overlay">
+          <div className="popup">
+            <h2 className="text-xl font-bold">Enroll in Our Courses!</h2>
+            <p className="mt-2">Our front-end, UI/UX design, and Digital Marketing courses start on February 5th! 2025</p>
+            <div className="mt-4 flex gap-4">
+              <button 
+                className="bg-yellow-300 text-blue-600 py-2 px-6 rounded"
+                onClick={handleEnrollNow}
+              >
+                <Link to="/enroll">
+                Enroll Now
+                </Link>
+              </button>
+              <button 
+                className="bg-gray-300 text-gray-700 py-2 px-6 rounded"
+                onClick={handleCancel}
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Separate Training Component */}
-      <Training />
+      <Training  className="popup-overlay"/>
     </>
   );
 };

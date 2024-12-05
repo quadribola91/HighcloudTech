@@ -1,4 +1,3 @@
-// Enroll.js
 import React, { useState, useEffect } from 'react';
 import { db } from './firebase'; // Adjusted import
 import { collection, addDoc } from 'firebase/firestore'; // Import necessary functions from Firestore
@@ -47,6 +46,9 @@ const Enroll = () => {
   };
 
   useEffect(() => {
+    // Scroll to top when the Enroll component is loaded
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
     // Clear messages after a few seconds
     if (message) {
       const timer = setTimeout(() => {
@@ -54,7 +56,7 @@ const Enroll = () => {
       }, 3000);
       return () => clearTimeout(timer);
     }
-  }, [message]);
+  }, [message]); // Effect runs when message changes
 
   return (
     <div className="enroll-container p-16 relative">

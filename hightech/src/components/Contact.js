@@ -31,6 +31,7 @@ const Contact = () => {
   };
 
   useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     // Clear messages after a few seconds
     if (successMessage || errorMessage) {
       const timer = setTimeout(() => {
