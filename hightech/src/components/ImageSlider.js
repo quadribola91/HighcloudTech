@@ -20,60 +20,28 @@ const ImageSlider = () => {
   }, []);
 
   return (
-    <div
-      style={{
-        position: 'relative',
-        overflow: 'hidden',
-        width: '100%',
-        height: '100vh',
-      }}
-    >
+    <div className="relative overflow-hidden w-full h-screen">
       {images.map((image, index) => (
         <div
           key={index}
+          className="absolute top-0 left-0 w-full h-full bg-cover bg-center transition-all duration-1000"
           style={{
-            position: 'absolute',
-            top: 0,
             left: `${(index - currentImageIndex) * 100}%`,
-            width: '100%',
-            height: '100%',
             backgroundImage: `url(${image})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            transition: 'left 1s ease-in-out',
           }}
         ></div>
       ))}
 
       {/* Overlay Text */}
-      <div
-        style={{
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          color: 'white',
-          textAlign: 'center',
-          padding: '20px',
-          backgroundColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent background
-          borderRadius: '10px',
-        }}
-      >
-        <h1 style={{ fontSize: '3rem', fontWeight: 'bold' }}>
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center p-5 bg-black bg-opacity-50 rounded-xl w-full max-w-[90%] sm:max-w-[80%]">
+        <h1 className="text-4xl sm:text-xl lg:text-3xl font-bold leading-tight">
           Our platform courses designed for your success.
         </h1>
-        <p style={{ marginTop: '20px', fontSize: '1.25rem' }}>Explore</p>
-        <div style={{ marginTop: '30px' }}>
+        <p className="mt-5 text-xl sm:text-lg">Explore</p>
+        <div className="mt-8">
           <a
             href="/courses"
-            style={{
-              textDecoration: 'none',
-              border: '2px solid #FBBF24',
-              color: '#FBBF24',
-              padding: '10px 20px',
-              borderRadius: '5px',
-              fontWeight: 'bold',
-            }}
+            className="text-lg sm:text-base md:text-lg border-2 border-yellow-400 text-yellow-400 px-6 py-3 rounded-md font-semibold transition-all duration-300 hover:bg-yellow-400 hover:text-white"
           >
             Explore Courses
           </a>
