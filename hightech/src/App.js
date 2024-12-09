@@ -8,13 +8,14 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import AboutUs from './components/About';
 import Enroll from './components/Enroll';
-import './styles.css'; // Import your CSS file
+import './styles.css'; // Import your global CSS file
+
 
 const App = () => {
   return (
     <Router>
       <div className="font-sans">
-        <div className="app-container"> {/* New container for styles */}
+        <div className="app-container"> 
           <Header /> {/* Always displayed */}
           <Routes>
             <Route path="/" element={<Home />} />

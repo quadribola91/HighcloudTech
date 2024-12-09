@@ -33,7 +33,7 @@ const Header = () => {
   }, [isOpen]);
 
   return (
-    <header className="bg-white text-blue-600 p-2 shadow-md rounded-full sticky top-0 z-50">
+    <header className="bg-white text-blue-600 p-2 shadow-md rounded-md sticky top-0 z-50">
       <nav className="container mx-auto flex justify-between items-center">
         <Link to="/" className="text-2xl font-bold">
           HighTECH
@@ -59,11 +59,10 @@ const Header = () => {
           id="mobile-menu" 
           className={`fixed inset-y-0 left-0 bg-gray-100 bg-opacity-90 transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : '-translate-x-full'} w-3/5 md:w-1/4 md:static md:bg-transparent md:opacity-100 md:flex md:flex-row md:space-x-6`}
         >
-          <ul className={`flex flex-col items-center md:flex-row md:space-x-6 text-blue-400`}>
+          <ul className={`flex flex-col items-center md:flex-row md:space-x-6 text-blue-600`}>
             <li className="p-4"><Link to="/" className="hover:underline" onClick={closeMenu}>Home</Link></li>
-            <li className="p-4"><Link to="/about" className="hover:underline" onClick={closeMenu}>AboutUs</Link></li>
             <li className="p-4"><Link to="/courses" className="hover:underline" onClick={closeMenu}>Courses</Link></li>
-            <li className="p-4"><Link to="/contact" className="hover:underline" onClick={closeMenu}>Contact</Link></li>
+            <li className="p-4"><Link to="/contact" className="hover:underline" onClick={closeMenu}>Contact Us</Link></li>
           </ul>
         </div>
       </nav>
