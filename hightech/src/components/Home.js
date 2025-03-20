@@ -116,7 +116,7 @@ const Home = () => {
           >
             <h2 style={{ fontSize: '1.25rem', fontWeight: 'bold' }}>Enroll in Our Courses!</h2>
             <p style={{ marginTop: '8px' }}>
-              Our Front-End, UI/UX design, and Digital Marketing courses start on February 5th! 2025
+              Our 2025 Web Development course starts soon
             </p>
             <div style={{ marginTop: '16px', display: 'flex', gap: '8px', justifyContent: 'center' }}>
               <button

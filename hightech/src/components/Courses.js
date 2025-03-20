@@ -14,12 +14,12 @@ const Courses = () => {
     const availableCourses = [
       {
         id: 1,
-        title: 'Front-End Developer',
+        title: 'Web Development',
         description: 'Learn HTML, CSS, and JavaScript to build stunning websites.',
-        details: 'In this immersive course, you will master essential front-end technologies. Start by building your first web page with HTML, style it using CSS, and bring it to life with interactive JavaScript. By the end, you will create responsive and user-friendly websites.',
+        details: 'In this immersive course, you will master essential web development technologies. Start by building your first web page with HTML, style it using CSS, and bring it to life with interactive JavaScript. By the end, you will create responsive and user-friendly websites.',
         icon: '🌐',
         rating: 4.5,
-        duration: '3 months', // Duration for the Front-End Developer course
+        duration: '4 months', // Duration for the Web development course
         formLink: 'https://docs.google.com/forms/d/e/1FAIpQLSctPWm62aQeLtP5TTH9yzsKaTiyJN12aVDDwvl9nCBZxMvovQ/viewform?usp=sf_link', // Front-End Developer Google Form link
       },
       {

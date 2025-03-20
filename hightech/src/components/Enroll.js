@@ -4,7 +4,7 @@ import { collection, addDoc } from 'firebase/firestore'; // Import necessary fun
 import './Contact.css'; // Import your CSS for spinner styling
 
 const courses = [
-  { id: 1, name: 'Front-End Development' },
+  { id: 1, name: 'Web Development' },
   { id: 2, name: 'Back-End Development' },
   { id: 3, name: 'Data Science' },
   { id: 4, name: 'UI/UX Designer' },
